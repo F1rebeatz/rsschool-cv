@@ -169,10 +169,6 @@
     display: none;
   }
 
-  /* .container > .steps__wrapper {
-    padding: 0;
-  } */
-
   .steps__wrapper {
     flex-flow: nowrap;
   }
