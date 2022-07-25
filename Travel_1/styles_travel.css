@@ -75,24 +75,18 @@ body {
   margin: 0 auto;
 }
 .container {
-  max-width: 1200px;
+  max-width: 1230px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
-.header__fone {
-  background-repeat: no-repeat;
-  background-size: 1440px 765px, 1442px 1331px;
-  background-repeat: no-repeat, no-repeat;
-  background-position: top, bottom;
-  background-position-x: center, center;
-  background-position-y: top, bottom;
-  overflow-x: hidden;
-}
 /* header start */
 .header {
   width: 100%;
   background: rgba(242, 120, 92, 0.7);
   box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
+  position: relative;
+  z-index: 1;
 }
 
 .header__wrapper {
@@ -147,9 +141,21 @@ body {
   line-height: 21px;
   color: #fff;
 }
+
 .nav__links:last-child {
   margin-right: 0;
 }
+.nav__links-mob {
+  display: none;
+  text-decoration: none;
+  font-family: "Red Hat Text", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #fff;
+}
+
 .nav__links:hover {
   background-color: #ecb2a5;
 }
@@ -158,6 +164,37 @@ body {
 }
 .popup {
   display: none;
+}
+.hamb__menu-btn {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  height: 200vh;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.3;
+  transition: 0.5s;
+  padding-top: 42px;
+  padding-right: 15px;
+  padding-left: 45px;
+  padding-bottom: 22px;
+}
+
+.show {
+  display: block;
 }
 
 .btn__header {
@@ -185,6 +222,14 @@ body {
 
 /* prewiew start */
 .preview {
+  position: relative;
+  margin-top: -90px;
+  margin-bottom: 78px;
+  padding: 120px 120px 30px 120px;
+  color: white;
+  background-image: url(/Travel_1/img/preview_image.png);
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 .preview__title {
   margin: 20px 0 15px;
@@ -206,7 +251,6 @@ body {
 }
 
 .preview__content {
-  height: 760px;
   max-width: 890px;
   display: flex;
   flex-flow: column wrap;
@@ -214,10 +258,9 @@ body {
 
 .preview__form {
   display: flex;
-  margin-top: 46px;
-  padding: 0 18px 0 41px;
+  margin: 46px 0 220px;
+  padding: 15px 18px 15px 41px;
   max-width: 890px;
-  min-height: 95px;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 16px;
   justify-content: space-between;
@@ -269,6 +312,7 @@ body {
 /* prewiew end */
 
 /* steps start */
+
 .steps__wrapper {
   max-width: 1200px;
   display: flex;
@@ -286,7 +330,7 @@ body {
   font-size: 40px;
   line-height: 53px;
   text-align: center;
-  margin: 0 0 40px;
+  margin: 0px 0 40px;
   transform: uppercase;
 }
 
@@ -321,23 +365,32 @@ body {
 /* steps end */
 
 /* destinations start */
-
-.dest__slides {
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-  gap: 60px;
+.slider {
+  position: relative;
 }
+.slider__list {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .slide {
   position: relative;
-  min-height: 800px;
-  min-width: 800px;
+  flex-shrink: 0;
+  margin: 0 30px;
+  margin-bottom: 12px;
 }
-.slide img {
+.slider-image {
   border-radius: 16px;
-  height: 800px;
-  width: 800px;
+  max-width: 800px;
+  max-height: 800px;
+}
+
+.slider__image-mob {
+  display: none;
 }
 .caption {
   display: inline;
@@ -353,7 +406,12 @@ body {
   color: #ffffff;
 }
 
+.mobile__clides {
+  display: none;
+}
+
 .pagination {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,10 +435,11 @@ body {
 /* destinations end */
 
 .btn__wrapper {
-  margin-top: 40px;
-  display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: center;
+}
+.btn__wrapper button {
+  margin-bottom: 30px;
 }
 
 /* stories start */
@@ -391,38 +450,36 @@ body {
   position: relative;
 }
 
-.stories__wrapper {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.7);
-}
-
 .stories__content {
-  display: flex;
-  flex-flow: wrap;
+  background: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  padding-top: 40px;
+  list-style: none;
 }
 
 .stories__row {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  flex-flow: row;
+  justify-content: center;
   align-items: flex-start;
+  padding-bottom: 20px;
 }
 
 .stories__block {
   max-width: 700px;
-  margin: 40px 10px 0 10px;
+  margin: 0px 10px 0 10px;
 }
 
 .stories__row img {
   height: 250px;
-  margin: 40px 40px 10px;
+  margin: 0px 40px 10px;
   filter: drop-shadow(0px 4px 4px #0d606f);
   border-radius: 16px;
 }
 
 .stories__subtitle {
   font-family: "Aleo";
-  font-weight: 400;
+  font-weight: 700;
   font-size: 35px;
   line-height: 42px;
   color: #0d606f;
